@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<project name="P02FullCredit" default="run" basedir=".">
+    <property name="src" location="."/>
+    <property name="build" location="build"/>
+
+    <target name="init">
+        <mkdir dir="${build}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src}" destdir="${build}" includeantruntime="false"/>
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="ToDo" fork="true" dir="${build}">
+            <classpath>
+                <pathelement path="${build}"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build}"/>
+    </target>
+</project>
